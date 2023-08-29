@@ -1,4 +1,4 @@
-// TASK 1
+// ****************** TASK 1 ***********************
 
 function createArray(start, end) {
     let arr = [];
@@ -8,10 +8,9 @@ function createArray(start, end) {
     return arr;
 }
 
-let arr = createArray(2, 9);
-console.log(arr); 
+console.log(createArray(2, 9)); 
 
-// TASK 2
+// ****************** TASK 2 ***********************
 
 function printNumbers(a, b) {
     let result = [];
@@ -25,11 +24,9 @@ function printNumbers(a, b) {
     return result.join(',');
 }
 
-let a = 1;
-let b = 5;
-console.log(printNumbers(a, b)); 
+console.log(printNumbers(2, 5)); 
 
-// TASK 3
+// ****************** TASK 3 ***********************
 
 function randArray(k) {
     let result = [];
@@ -42,10 +39,9 @@ function randArray(k) {
     return result;
 }
 
-let k = 5;
-console.log(randArray(k)); 
+console.log(randArray(5)); 
 
-// TASK 4
+// ****************** TASK 4 ***********************
 
 function compact(arr) {
     return arr.filter((value, index, self) => {
@@ -53,11 +49,9 @@ function compact(arr) {
     });
 }
 
-const arr = [5, 3, 4, 5, 6, 7, 3];
-const arr2 = compact(arr);
-console.log(arr2); 
+console.log(compact([5, 3, 4, 5, 6, 7, 3])); 
 
-// TASK 5
+// ****************** TASK 5 ***********************
 
 function separateTypes(arr) {
     const result = [];
