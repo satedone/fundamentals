@@ -81,3 +81,169 @@ console.log(propsCount(mentor));
 // Write class Student which is inherited from Person but its constructor obtain also year as parameter. year is year of entry to the university. In class Student owerride method getFullName(middleName) so that this method return string surname, name and middleName are written with a spaces. Write method getCourse() which return the student's current course (from 1 to 6). The value of the course will be determined as the difference between the current year (to be determined independently) and the year of entry to the university.
 
 
+class Person {
+    constructor(name, surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+
+    getFullName() {
+        return this.surname + ' ' + this.name;
+    }
+}
+
+class Student extends Person {
+    constructor(name, surname, year) {
+        super(name, surname);
+        this.year = year;
+    }
+
+    getFullName(middleName) {
+        return this.surname + ' ' + this.name + ' ' + middleName;
+    }
+
+    getCourse() {
+        const currentYear = new Date().getFullYear();
+        const course = currentYear - this.year + 1;
+        return Math.max(1, Math.min(6, course)); // обмежуємо курс від 1 до 6
+    }
+}
+
+const stud1 = new Student("Petro", "Petrenko", 2019);
+console.log(stud1.getFullName("Petrovych"));
+console.log("Current course: " + stud1.getCourse());
+
+const person = new Person('John', 'Doe');
+const result = person.getFullName();
+console.log(result);
+
+
+// QUESTION 4
+
+// Write class Marker that describes a simple marker. The instances of this class should have the following components:
+
+// Private field that stores the color of the marker and only getter color for this field, we set color by parameter in constructor.
+// Private field that stores the amount of ink in the marker (in percentage), marker creating with 100% of ink and only getter ink for this field.
+// Public method print(text) that call console.log with letters from text one by one, and write in console as long as there is ink in the marker; one non-whitespace character is 10% of the ink in the marker.
+// Implement a class that describes a RefillableMarker inherited from a Marker and adding a method refill which add ink to 100%.
+
+class Marker {
+    #color;
+    #ink;
+    constructor(color) {
+        this.#color = color; // Задаємо колір маркера при створенні об'єкта
+        this.#ink = 100; // Встановлюємо початковий запас чорнила в 100%
+        
+        // Забороняємо виводити властивості _color і _ink при виклику Object.keys()
+        Object.defineProperty(this, '_color', { enumerable: false });
+        Object.defineProperty(this, '_ink', { enumerable: false });
+    }
+
+    get color() {
+        return this.#color;
+    }
+
+    get ink() {
+        return this.#ink; 
+    }
+    set ink(value) {
+        this.#ink = value;
+    }
+    
+    print(text) {
+        for (let i = 0; i < text.length; i++) {
+            const character = text[i];
+            if (this.#ink > 0) {
+                if (character !== ' ') {
+                    console.log(character); // Друкуємо символ
+                    this.#ink -= 10; // Зменшуємо залишок чорнила
+                } else {
+                    console.log(character); // Друкуємо пробіл
+                }
+            } else {
+                break;
+            }
+        }
+    }
+}
+
+class RefillableMarker extends Marker {
+    constructor(color) {
+        super(color); 
+    }
+
+    refill() {
+       this.ink = 100; 
+    }
+}
+
+
+
+// Створюємо маркер та виводимо текст
+// const marker = new Marker("red");
+// marker.print("Hello World!");
+
+// Створюємо маркер, підзаряджаємо його і виводимо текст
+const marker = new RefillableMarker("red");
+marker.print("Lorem ipsum dolor sit amet");
+marker.print("Lorem ipsum dolor sit amet");
+marker.refill();
+marker.print("Lorem ipsum dolor sit amet");
+
+
+// QUESTION 5
+
+
+class Worker {
+    #fullName;
+    #dayRate;
+    #workingDays;
+    #experience;
+
+    constructor(fullName, dayRate, workingDays, experience) {
+        this.#fullName = fullName;
+        this.#dayRate = dayRate;
+        this.#workingDays = workingDays;
+        this.#experience = experience;
+    }
+
+    get fullName() {
+        return this.#fullName;
+    }
+
+    get dayRate() {
+        return this.#dayRate;
+    }
+
+    set dayRate(value) {
+        this.#dayRate = value;
+    }
+
+    get experience() {
+        return this.#experience;
+    }
+
+    set experience(value) {
+        this.#experience = value;
+    }
+
+    get workingDays() {
+        return this.#workingDays;
+    }
+
+    addWorkingDays(n) {
+        this.#workingDays += n;
+    }
+
+    getSalary() {
+        return this.#dayRate * this.#workingDays;
+    }
+
+    getSalaryWithExperience() {
+        return this.#dayRate * this.#workingDays * this.#experience;
+    }
+
+    static sortBySalary(workers) {
+        return workers.slice().sort((a, b) => a.getSalary() - b.getSalary());
+    }
+}
