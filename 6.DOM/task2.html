@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TASK 2</title>
+</head>
+<body>
+    <h1>I'am a big header!!!</h1>
+    <div id="myDiv">
+      <p>First paragraph</p>
+      <p>Second paragraph</p>
+      <p>Third paragraph</p>
+      <p>Fourth paragraph</p>
+    </div>
+    <ul id="myList">
+      <li>Make</li>
+      <li>me</li>
+      <li>horizontal!</li>
+    </ul>
+    <span>Make me invisible, please!</span>
+    <script>
+
+        document.querySelector('h1').style.backgroundColor = '#90ee90';
+        document.querySelectorAll('p')[0].style.fontWeight = 'bold';
+        document.querySelectorAll('p')[1].style.color = 'red'; 
+        document.querySelectorAll('p')[2].style.textDecoration = 'underline'; 
+        document.querySelectorAll('p')[3].style.fontStyle = 'italic'; 
+
+        // Отримати всі елементи <li> зі списку
+        const listItems = document.querySelectorAll('#myList li');
+
+        // Отримати текст кожного <li> і об'єднати їх
+        const combinedText = Array.from(listItems).map(li => li.textContent).join('');
+
+        // Додати 10 пробілів перед об'єднаним текстом
+        const spacedText = ' '.repeat(10) + combinedText;
+
+        // Знайти елемент <ul> за його id
+        const myListElement = document.getElementById('myList');
+
+        // Змінити текст елементу <ul> на об'єднаний текст з пробілами
+        myListElement.textContent = spacedText;
+
+        // Приховуємо span
+        const spanElement = document.querySelector('span');
+        spanElement.style.display = 'none';
+
+
+    </script>
+</body>
+</html>

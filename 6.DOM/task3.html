@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TASK 3</title>
+<body>
+  <main>
+ </main> 
+ <script>
+
+    // Створюємо основний вузол body
+    const body = document.createElement('body');
+
+    // Створюємо головний вузол main з атрибутами class
+    const main = document.createElement('main');
+    main.classList.add('mainClass', 'check', 'item');
+
+    // Створюємо вузол div з id
+    const myDiv = document.createElement('div');
+    myDiv.id = 'myDiv';
+
+    // Створюємо параграф
+    const paragraph = document.createElement('p');
+    paragraph.textContent = 'First paragraph';
+
+    // Додаємо параграф в div
+    myDiv.appendChild(paragraph);
+
+    // Додаємо div в main
+    main.appendChild(myDiv);
+
+    // Додаємо main в body
+    body.appendChild(main);
+
+    // Додаємо body до сторінки
+    document.documentElement.appendChild(body);
+
+ </script>
+</body>
+
