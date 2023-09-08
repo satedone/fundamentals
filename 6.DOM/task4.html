@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TASK 4</title>
+    <style>
+        .array {
+            width: 550px;
+            margin: 0 auto;
+        }
+
+        input {
+            display: block;
+            margin-top: 10px;
+            width: 250px;
+        }
+
+        .out {
+            width: 100%;
+            height: 300px;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0 10px 0;
+            font-size: 25px;
+            line-height: 35px;
+            word-wrap: break-word;
+            color: white;
+            background-color: green;
+            padding-left: 50px;
+            padding-top: 20px;
+            
+        }
+
+
+    </style>
+</head>
+<body>
+<main>
+    <div class="array">
+        <h1>Масиви в Java Script</h1>
+        <fieldset>
+            <legend style="text-align: center; "> Поля які будуть входити до масиву </legend>
+            <input type="text" data-form="ПІБ" class="text-data arr" name="fio" placeholder="Введіть ПІБ">
+            <input type="phone" data-form="Номер телефону" class="arr" name="phone" placeholder="+380-00-000-0000">
+            <input type="date" data-form="Дата народження" class="arr" name="birthday">
+            <input type="email" data-form="Електронна пошта" class="arr" placeholder="email@softserveinc.com" name="email">
+
+            <input type="button" value="Заповнити дані" id="fillDataBtn">
+            <input type="submit" class="btn" id="submitBtn">
+
+        </fieldset>
+
+        <div class="out"></div>
+    </div>
+</main>
+<script>
+    document.querySelector('.btn').addEventListener('click', function () {
+        const fio = document.querySelector('input[name="fio"]').value;
+        const phone = document.querySelector('input[name="phone"]').value;
+        const birthday = document.querySelector('input[name="birthday"]').value;
+        const email = document.querySelector('input[name="email"]').value;
+        const outBlock = document.querySelector('.out');
+
+        const result = `
+            ПІБ: ${fio}<br>
+            Номер телефону: ${phone}<br>
+            Дата народження: ${birthday}<br>
+            Електронна пошта: ${email}<br>
+        `;
+
+        outBlock.innerHTML = result;
+    });
+
+    document.querySelector('#fillDataBtn').addEventListener('click', function () {
+        document.querySelector('input[name="fio"]').value = "Назаренко С.В.";
+        document.querySelector('input[name="phone"]').value = "+38-007-111-11-11";
+        document.querySelector('input[name="birthday"]').value = "1992-07-26";
+        document.querySelector('input[name="email"]').value = "mail@mail.com";
+    });
+</script>
+</body>
+</html>
