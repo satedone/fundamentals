@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BOM. TASK 6</title>
+    <style>
+        p {
+           font-size: 24px;
+           font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Width: <span id="width"></span> px, Hight: <span id="height"></span>  px</p>
+    
+    <script>
+
+        function updateWindowSize() {
+            const widthSpan = document.getElementById("width");
+            const heightSpan = document.getElementById("height");
+
+
+            const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+            widthSpan.textContent = windowWidth;
+            heightSpan.textContent = windowHeight;
+        }
+
+        window.addEventListener("load", updateWindowSize);
+        window.addEventListener("resize", updateWindowSize);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BOM. TASK 7</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <select name="country" id="country">
+        <option value="ger">Germany</option>
+        <option value="usa">USA</option>
+        <option value="ukr">Ukraine</option>
+    </select>
+
+    <select name="cities" id="cities"></select>
+    <p></p>
+    <script>
+        const countrySelect = document.getElementById("country");
+        const citiesSelect = document.getElementById("cities");
+        const resultParagraph = document.querySelector("p");
+    
+        const citiesByCountry = {
+            ger: ["Berlin", "Hamburg", "Munich"],
+            usa: ["New York", "Los Angeles", "Chicago"],
+            ukr: ["Kyiv", "Lviv", "Dnipro"],
+        };
+    
+        function updateResult() {
+            const selectedCountryText = countrySelect.options[countrySelect.selectedIndex].text;
+            const selectedCity = citiesSelect.options[citiesSelect.selectedIndex].text;
+    
+            resultParagraph.textContent = selectedCountryText + ", " + selectedCity;
+        }
+    
+        function updateCities() {
+            const selectedCountry = countrySelect.value;
+            citiesSelect.innerHTML = "";
+    
+            citiesByCountry[selectedCountry].forEach(function(city) {
+                const option = document.createElement("option");
+                option.value = city;
+                option.textContent = city;
+                citiesSelect.appendChild(option);
+            });
+    
+            updateResult();
+        }
+    
+        countrySelect.addEventListener("change", function () {
+            updateCities();
+            updateResult();
+        });
+    
+        citiesSelect.addEventListener("change", updateResult);
+    
+        updateCities();
+        updateResult();
+    </script>
+    
+    
+</body>
+
+</html>

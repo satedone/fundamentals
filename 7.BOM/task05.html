@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BOM. TASK 5</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 24px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        p {
+            margin-top: 25px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="liveButton">Live button!</button>
+    <p id="message"></p>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const myButton = document.getElementById("liveButton");
+            const message = document.getElementById("message");
+
+            myButton.addEventListener("click", function () {
+                message.textContent = "I was pressed!";
+            });
+
+            myButton.addEventListener("mouseover", function () {
+                message.textContent = "Mouse on me!";
+            });
+
+            myButton.addEventListener("mouseout", function () {
+                message.textContent = "Mouse is not on me!";
+            });
+        });
+
+    </script>
+</body>
+
+</html>
