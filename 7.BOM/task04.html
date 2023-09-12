@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BOM. TASK 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        select,
+        button {
+            margin: 20px;
+            font-size: 18px;
+            padding: 5px;
+            border-radius: 10px;
+            width: 100px;
+            height: 35px;
+        }
+
+        .button {
+            width: 290px;
+            height: 35px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 600;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .button:hover {
+            background-color: #2EE59D;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <select id="dropdown">
+        <option value="Peter">Peter</option>
+        <option value="John">John</option>
+        <option value="Alice">Alice</option>
+        <option value="Alex">Alex</option>
+        <option value="Iren">Iren</option>
+    </select>
+    <button id="deleteButton" class="button">Choose and Delete</button>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const dropdown = document.getElementById("dropdown");
+            const deleteButton = document.getElementById("deleteButton");
+
+            deleteButton.addEventListener("click", function () {
+                const selectedOption = dropdown.options[dropdown.selectedIndex];
+                if (selectedOption) {
+                    dropdown.remove(selectedOption.index);
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
