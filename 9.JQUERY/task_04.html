@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JQUERY. Task 04</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <input type="checkbox" id="checkbox1">
+        <input type="checkbox" id="checkbox2">
+        <input type="checkbox" id="checkbox3">
+        <input type="checkbox" id="checkbox4">
+        <input type="checkbox" id="checkbox5">
+        <input type="checkbox" id="checkbox6">
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        const checkboxes = document.querySelectorAll("input[type='checkbox']");
+        let checkedCount = 0;
+        function handleCheckboxChange() {
+            if (this.checked) {
+                checkedCount++;
+                if (checkedCount === 3) {
+                    checkboxes.forEach(checkbox => {
+                        checkbox.disabled = true;
+                    });
+                }
+            }
+        }
+
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", handleCheckboxChange);
+        });
+
+    </script>
+</body>
+
+</html>
