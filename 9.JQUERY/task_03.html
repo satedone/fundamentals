@@ -18,18 +18,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>
 
-        const headers = document.querySelectorAll("h3");
-        const divs = document.querySelectorAll("div");
+        $(document).ready(function () {
 
+            $("h3").each(function () {
 
-        headers.forEach(header => {
+                const nextElement = $(this).next();
+                if (nextElement.is("div")) {
 
-            const nextElement = header.nextElementSibling;
-
-            if (nextElement && nextElement.tagName === "DIV") {
-                header.parentNode.insertBefore(nextElement, header);
-            }
+                    $(this).before(nextElement);
+                }
+            });
         });
+
     </script>
 </body>
 
